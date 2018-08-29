@@ -21,6 +21,8 @@ body {
     font-family: 'Coda', cursive;
 }
 
+
+
 .container {
     display: flex;
     justify-content: center;
@@ -40,7 +42,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #F78A17 0%, #EF798A 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -63,11 +65,12 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+
 }
 
 .deck .card.open {
     transform: rotateY(0);
-    background: #02b3e4;
+    background: #F7BFB4;
     cursor: default;
 }
 
@@ -77,8 +80,16 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
-    font-size: 33px;
+    background: #136F63;
+    font-size: 50px;
+}
+
+/* when cards are mismatched they turn red */
+
+.deck .card.mismatch {
+    cursor: default;
+    background: #A71D31;
+    font-size: 50px;
 }
 
 /*
@@ -89,13 +100,17 @@ h1 {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
+    border-style: solid;
+    border-width: 5px;
 }
 
 .score-panel .stars {
+    color: #EF798A;
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    font-size: 20px;
 }
 
 .score-panel .stars li {
@@ -106,4 +121,59 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    color: #F78A17;
+    font-size: 30px;
+}
+/* styling for the modal */
+.modalbgd{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.438);
+}
+
+.hide{
+  display: none;
+}
+
+.modalBody{
+  position: relative;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  background: #EF798A;
+  transform: translate(-50%, -70%);
+}
+.modalHeading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-bottom: 2px solid orange;
+}
+
+.modalCloser{
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.modalStats{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid green;
+}
+
+.modalButtons{
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.replay .cancel{
+  width: 60px;
+  height: 30px;
 }
