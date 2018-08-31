@@ -14,13 +14,18 @@
         <header>
             <h1>Matching Game</h1>
         </header>
-        <div id="clock" class= "clock">00:00</div>
+        <div id="clock" class= "clock">0:00</div>
         <section class="score-panel">
         	<ul class="stars">
         		<li id="starOne"><i class="fa fa-star"></i></li>
         		<li id="starTwo"><i class="fa fa-star"></i></li>
         		<li id="starThree"><i class="fa fa-star"></i></li>
         	</ul>
+          <!-- <div class="stars">
+        		<p id="starOne"><i class="fa fa-star"></i></p>
+        		<p id="starTwo"><i class="fa fa-star"></i></p>
+        		<p id="starThree"><i class="fa fa-star"></i></p>
+        	</div> -->
 
         	<span class="moves">0</span> Moves
 
@@ -80,17 +85,19 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
-    </div>
-<div class="modalbgd hide">
+
+
+
+<div class="modalbgd">
     <div class="modalBody">
       <div class="modalHeading">
-        <h1 class="modalTitle">Stats</h1>
+        <h1 class="modalTitle">Congratulations!!!</h1>
         <span class="modalCloser">x</span>
       </div>
       <div class="modalStats">
-          <span class="modalTime">Time =</span>
-          <span class="modalStars">Stars =</span>
-          <span class="modalMoves">Moves =</span>
+          <span class="modalTime">You finished in </span>
+          <span class="modalStars"></span>
+          <span class="modalMoves"></span>
       </div>
       <div class="modalButtons">
         <button class="cancel">Cancel</button>

@@ -1,4 +1,5 @@
 
+
  const cardsToShuffle = ['fa-diamond', 'fa-diamond',
               'fa-paper-plane-o', 'fa-paper-plane-o',
               'fa-anchor', 'fa-anchor',
@@ -14,6 +15,8 @@ let toggledCards = [];
 let moves = 0;
 let active = true;
 const deck = document.querySelector('.deck');
+const stars= Array.from(document.querySelectorAll('.stars li'));
+writeModalStats();
 
 
 // timer starts ONLY once user clicks the deck
@@ -53,17 +56,21 @@ function addMove () {
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = moves;
 }
+
 //decreases star score based on number of moves
 function changeStars (){
-    const stars= Array.from(document.querySelectorAll('.stars li'));
-
-    if (moves >= 10){
-    stars[2].style.color = '#ffffff';
+  //const stars= Array.from(document.querySelectorAll('.stars li'));
+    if (moves === 2){
+  //  stars[2].style.color = '#ffffff';
+    stars.pop();
     }
-    if (moves >=20) {
-      stars[1].style.color = '#ffffff';
+    if (moves === 32) {
+  //  stars[1].style.color = '#ffffff';
+      stars.pop();
     }
+      console.log(stars.length);
 };
+
 
 
 function startTimer() {
@@ -171,6 +178,7 @@ console.log(matchedCards.length);
 if (matchedCards.length === 16){
 stopTimer();
 console.log('all cards have been matched!');
+writeModalStats();
 }
 }
 
@@ -180,4 +188,30 @@ console.log('all cards have been matched!');
 // }
 //
 // toggleModal() //opens the modal
-//toggleModal() //closes the modal
+// //toggleModal() //closes the modal
+// writeModalStats();
+//
+
+function writeModalStats(){
+    const moveStat = document.querySelector('.moves').textContent;
+    const timeStat = document.querySelector('.clock').textContent;
+    const starStat = stars.length;
+    console.log(moveStat);
+    console.log(timeStat);
+    console.log(starStat);
+    document.querySelector('.modalMoves').innerHTML = "in " + moveStat + " moves!";
+    document.querySelector('.modalTime').innerHTML = "You finished with a time of " + timeStat;
+    document.querySelector('.modalStars').innerHTML = "with a rating of " + starStat + " stars!";
+
+}
+
+// function writeStarStats(){
+//   const elmnt = document.getElementsByTagName("ul")[0];
+//   const cln = elmnt.cloneNode(true);
+//   console.log(cln);
+//   const gameStars = document.querySelector('.modalStars').appendChild(cln);
+//   gameStars.classList.add('.finalStars');
+//   //gameStars.style.listStyle = "none";
+//   //gameStars.style.color = '#ffffff';
+//
+// }

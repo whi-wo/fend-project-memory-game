@@ -22,7 +22,6 @@ body {
 }
 
 
-
 .container {
     display: flex;
     justify-content: center;
@@ -118,12 +117,19 @@ h1 {
     display: inline-block;
 }
 
+/* .finalStars{
+  list-style: none;
+  display: inline-block;
+  color: green;
+} */
+
 .score-panel .restart {
     float: right;
     cursor: pointer;
     color: #F78A17;
     font-size: 30px;
 }
+
 /* styling for the modal */
 .modalbgd{
   position: absolute;
@@ -146,6 +152,7 @@ h1 {
   background: #EF798A;
   transform: translate(-50%, -70%);
 }
+
 .modalHeading{
   display: flex;
   justify-content: space-between;
@@ -159,7 +166,8 @@ h1 {
   font-size: 2rem;
 }
 
-.modalStats{
+
+ .modalStats{
   display: flex;
   flex-direction: column;
   align-items: center;
