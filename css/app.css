@@ -161,6 +161,9 @@ h1 {
   border-bottom: 2px solid orange;
 }
 
+.modalTitle{
+  align-content: center;
+}
 .modalCloser{
   font-weight: bold;
   font-size: 2rem;
@@ -179,6 +182,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   padding: 1rem;
+  cursor: pointer;
 }
 
 .replay .cancel{

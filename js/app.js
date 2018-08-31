@@ -16,7 +16,7 @@ let moves = 0;
 let active = true;
 const deck = document.querySelector('.deck');
 const stars= Array.from(document.querySelectorAll('.stars li'));
-writeModalStats();
+//writeModalStats();
 
 
 // timer starts ONLY once user clicks the deck
@@ -179,13 +179,14 @@ if (matchedCards.length === 16){
 stopTimer();
 console.log('all cards have been matched!');
 writeModalStats();
+toggleModal();
 }
 }
 
-// function toggleModal(){
-//   const modal = document.querySelector('.modalbgd');
-//   modal.classList.toggle('hide');
-// }
+function toggleModal(){
+const modal = document.querySelector('.modalbgd');
+modal.classList.toggle('hide');
+}
 //
 // toggleModal() //opens the modal
 // //toggleModal() //closes the modal
