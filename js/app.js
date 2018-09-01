@@ -13,7 +13,11 @@ let toggledCards = [];
 let moves = 0;
 let active = true;
 const deck = document.querySelector('.deck');
-const stars= Array.from(document.querySelectorAll('.stars li'));
+const stars = Array.from(document.querySelectorAll('.stars li'));
+const movesText = document.querySelector('.moves');
+const matchedCards = document.querySelectorAll('.match');
+const starThree= stars[2];
+const starTwo = stars[1];
 //writeModalStats();
 
 
@@ -51,7 +55,7 @@ function shuffle(array) {
 
 function addMove () {
  moves++;
- const movesText = document.querySelector('.moves');
+ //const movesText = document.querySelector('.moves');
  movesText.innerHTML = moves;
 }
 
@@ -106,10 +110,11 @@ function stopTimer () {
 }
 
 //function to reset the timer, stars, and deck when the game has been restarted
-document.getElementById("reset").addEventListener("click", resetTimer);
+document.getElementById("reset").addEventListener("click", gameReset);
 
 function resetTimer () {
- document.getElementById("clock").innerHTML = 00 + ":" + 00 + ":"+ 00;
+ document.getElementById("clock").innerHTML = 00 + ":" + 00;
+ active = false;
 }
 
 deck.addEventListener('click', event => {
@@ -171,7 +176,7 @@ function checkForMatch() {
 
 //game ends when all of the cards are matched
 function checkMatchedCards (){
-const matchedCards= document.querySelectorAll('.match');
+//const matchedCards= document.querySelectorAll('.match');
 console.log(matchedCards.length);
 if (matchedCards.length === 16){
 stopTimer();
@@ -185,11 +190,11 @@ function toggleModal(){
 const modal = document.querySelector('.modalbgd');
 modal.classList.toggle('hide');
 }
-//
+
 // toggleModal() //opens the modal
 // //toggleModal() //closes the modal
 // writeModalStats();
-//
+
 
 function writeModalStats(){
    const moveStat = document.querySelector('.moves').textContent;
@@ -201,4 +206,47 @@ function writeModalStats(){
    document.querySelector('.modalMoves').innerHTML = "in " + moveStat + " moves!";
    document.querySelector('.modalTime').innerHTML = "You finished with a time of " + timeStat;
    document.querySelector('.modalStars').innerHTML = "with a rating of " + starStat + " stars!";
+}
+
+function resetCards() {
+  const cards = document. querySelectorAll('.deck li');
+  for (let card of cards) {
+    card.className = 'card';
+  }
+}
+
+//resetting the stars bringing the color back and make the array hold 3 stars again
+function resetStars(){
+  if(stars.length = 2){
+    stars.push(starThree);
+    starThree.style.color = '#EF798A';
+
+  if(stars.length = 1){
+    stars.push(starTwo);
+    starTwo.style.color = '#EF798A';
+  }
+  }
+
+  // const newStars = Array.from(document.querySelectorAll('.stars li'));
+  // if (stars[0].style.color = '#ffffff'){
+  //   stars[0].style.color= '#EF798A';
+  }
+  //stars[1].style.color = '#EF798A';
+
+
+function gameReset(){
+  let moves= 0;
+  movesText.innerHTML = 0
+  resetTimer();
+  let toggledCards = [];
+  resetCards();
+  resetStars();
+  shuffleDeck();
+}
+
+document.querySelector('.replay').addEventListener('click',replayGame);
+
+function replayGame (){
+  gameReset();
+  toggleModal();
 }
