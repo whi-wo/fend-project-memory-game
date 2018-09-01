@@ -155,15 +155,15 @@ h1 {
 
 .modalHeading{
   display: flex;
-  justify-content: space-between;
+  position: relative;
+  justify-content: space-around;
   align-items: center;
-  padding: 0 1.5rem;
-  border-bottom: 2px solid orange;
 }
 
 .modalTitle{
-  align-content: center;
+  text-align: center;
 }
+
 .modalCloser{
   font-weight: bold;
   font-size: 2rem;
@@ -175,7 +175,6 @@ h1 {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  border-bottom: 1px solid green;
 }
 
 .modalButtons{
