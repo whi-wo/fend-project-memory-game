@@ -2,11 +2,13 @@ html {
     box-sizing: border-box;
 }
 
+
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
+
 
 html,
 body {
@@ -15,6 +17,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
@@ -29,19 +32,17 @@ body {
     flex-direction: column;
 }
 
+
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
 
-/*
- * Styles for the deck of cards
- */
-
+/* Styles for the deck of cards */
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #F78A17 0%, #EF798A 100%);
+    background: linear-gradient(160deg, #f78a17 0%, #ef798a 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -51,6 +52,7 @@ h1 {
     align-items: center;
     margin: 0 0 3em;
 }
+
 
 .deck .card {
     height: 125px;
@@ -67,34 +69,25 @@ h1 {
 
 }
 
+
 .deck .card.open {
     transform: rotateY(0);
-    background: #F7BFB4;
+    background: #f7bfb4;
     cursor: default;
 }
+
 
 .deck .card.show {
     font-size: 33px;
 }
 
+
 .deck .card.match {
     cursor: default;
-    background: #136F63;
+    background: #136f63;
     font-size: 50px;
 }
-
-/* when cards are mismatched they turn red */
-
-.deck .card.mismatch {
-    cursor: default;
-    background: #A71D31;
-    font-size: 50px;
-}
-
-/*
- * Styles for the Score Panel
- */
-
+/* Styles for the Score Panel */
 .score-panel {
     text-align: center;
     width: 345px;
@@ -102,8 +95,9 @@ h1 {
 
 }
 
+
 .score-panel .stars {
-    color: #EF798A;
+    color: #ef798A;
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -111,31 +105,34 @@ h1 {
     font-size: 20px;
 }
 
+
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
 
-#reset{
+
+#reset {
   width: 60px;
   height: 30px;
   cursor: pointer;
   font-size: 16px;
   border-radius: 10px;
-  color: #F78A17;
-  border: 2px solid #EF798A;
+  color: #f78a17;
+  border: 2px solid #ef798a;
   float: right;
 }
 
-.score-panel .restart{
+
+.score-panel .restart {
     float: right;
     cursor: pointer;
-    color: #F78A17;
+    color: #f78a17;
     font-size: 30px;
 }
 
-/* styling for the modal */
-.modalbgd{
+/* styles for the modal */
+.modal-bgd {
   position: absolute;
   top: 0;
   left: 0;
@@ -144,48 +141,55 @@ h1 {
   background: rgba(0, 0, 0, 0.438);
 }
 
-.hide{
+
+.hide {
   display: none;
 }
 
-.modalBody{
+
+.modal-body {
   position: relative;
   width: 400px;
   top: 50%;
   left: 50%;
-  background: #EF798A;
+  background: #ef798a;
   transform: translate(-50%, -70%);
 }
 
-.modalHeading{
+
+.modal-heading {
   display: flex;
   position: relative;
   justify-content: space-around;
   align-items: center;
 }
 
-.modalTitle{
+
+.modal-title {
   text-align: center;
 }
 
-.modalCloser{
+
+.modal-closer {
   font-weight: bold;
   font-size: 2rem;
 }
 
 
- .modalStats{
+ .modal-stats {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
 }
 
-.modalButtons{
+
+.modal-buttons {
   display: flex;
   justify-content: space-around;
   padding: 1rem;
 }
+
 
 #replay {
   width: 60px;
@@ -193,14 +197,15 @@ h1 {
   cursor: pointer;
   font-size: 16px;
   border-radius: 10px;
-  color: #F78A17;
+  color: #f78a17;
 }
 
-#close{
+
+#close {
   width: 60px;
   height: 30px;
   cursor: pointer;
   font-size: 16px;
   border-radius: 10px;
-  color: #EF798A;
+  color: #ef798a;
 }
