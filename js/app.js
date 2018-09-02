@@ -18,7 +18,7 @@ const deck = document.querySelector('.deck');
 const stars = Array.from(document.querySelectorAll('.stars li'));
 const movesText = document.querySelector('.moves');
 const matchedCards = document.querySelectorAll('.match');
-const starThree= stars[2];
+const starThree = stars[2];
 const starTwo = stars[1];
 
 
@@ -92,7 +92,6 @@ function startTimer() {
        min++;
      }
     if (min > 10) min = "0" + min;
-    //min++;
     sec = 0;
   } else {
     sec++;
@@ -142,7 +141,6 @@ deck.addEventListener('click', event => {
      toggledCards.length < 2 &&
      !toggledCards.includes(clickTarget)
    );
-
  }
 
  //function for toggling cards
