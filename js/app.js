@@ -76,8 +76,7 @@ function changeStars (){
 
 //defines the timer
 function startTimer() {
- if (active)
- {
+  if (active) {
    const timer = document.getElementById("clock").innerHTML;
    const arr = timer.split(":"); //splitting the timer into an array
    let min = arr[0];
@@ -106,22 +105,23 @@ function startTimer() {
 
 //function to be called when the game is over to stop the timer
 function stopTimer () {
- active= false;
+ active = false;
  console.log('the clock has been stopped');
 }
 
 //function to reset the timer, stars, and deck when the game has been restarted
-document.getElementById("reset").addEventListener("click",gameReset);
+document.getElementById("reset").addEventListener("click", gameReset);
 
 function resetTimer () {
  document.getElementById("clock").innerHTML = "0" + ":" + "00";
- active = false;
+ //timerOn = false;
 }
 
 deck.addEventListener('click', event => {
    const clickTarget = event.target;
    if (validClick(clickTarget
    )){
+
      toggleCard(clickTarget);
      addToggledCard(clickTarget);
      if (toggledCards.length === 2) {
@@ -181,8 +181,8 @@ console.log(matchedCards.length);
 if (matchedCards.length === 16){
 stopTimer();
 console.log('all cards have been matched!');
-writeModalStats();
-toggleModal();
+setTimeout(writeModalStats, 200);
+setTimeout(toggleModal, 500);
 }
 }
 
@@ -196,15 +196,15 @@ modal.classList.toggle('hide');
 
 //function to gather the game stats and present them in the modal
 function writeModalStats(){
-   const moveStat = document.querySelector('.moves').textContent;
    const timeStat = document.querySelector('.clock').textContent;
+   const moveStat = document.querySelector('.moves').textContent;
    const starStat = stars.length;
-   console.log(moveStat);
    console.log(timeStat);
    console.log(starStat);
-   document.querySelector('.modalMoves').innerHTML = "in " + moveStat + " moves!";
+   console.log(moveStat);
    document.querySelector('.modalTime').innerHTML = "You finished with a time of " + timeStat;
-   document.querySelector('.modalStars').innerHTML = "with a rating of " + starStat + " stars!";
+   document.querySelector('.modalMoves').innerHTML = "in " + moveStat + " moves";
+   document.querySelector('.modalStars').innerHTML = "with star rating of " + starStat + "!";
 }
 
 //function to reset the cards back to flipper over
@@ -215,7 +215,7 @@ function resetCards() {
   }
 }
 
-//resetting the stars. Thos function pushes stars back into the array and recolors them
+//resetting the stars. This function pushes stars back into the array and recolors them
 function resetStars(){
   if(stars.length = 2){
     stars.push(starThree);
@@ -227,23 +227,26 @@ function resetStars(){
   }
   }
 
-
-
-
 function gameReset(){
-  moves = 0;
-  movesText.innerHTML = 0
-  resetTimer();
-  resetCards();
-  resetStars();
-  shuffleDeck();
+  location.reload();
 }
 
-document.querySelector('#replay').addEventListener('click',replayGame);
+
+// function gameReplay(){
+//   location.reload();
+  // moves = 0;
+  // movesText.innerHTML = 0
+  // resetTimer();
+  // resetCards();
+  // resetStars();
+  // shuffleDeck();
+//}
+
+document.querySelector('#replay').addEventListener('click',gameReset);
 document.querySelector('#close').addEventListener('click',toggleModal);
 
 
-function replayGame () {
-  gameReset();
-  toggleModal();
-}
+// function replayGame () {
+//   gameReplay();
+//   toggleModal();
+// }
