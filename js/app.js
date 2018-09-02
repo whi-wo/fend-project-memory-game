@@ -1,3 +1,5 @@
+//global variables
+
 const cardsToShuffle = ['fa-diamond', 'fa-diamond',
              'fa-paper-plane-o', 'fa-paper-plane-o',
              'fa-anchor', 'fa-anchor',
@@ -8,7 +10,7 @@ const cardsToShuffle = ['fa-diamond', 'fa-diamond',
              'fa-bomb', 'fa-bomb',
              ];
 
-//global variables
+
 let toggledCards = [];
 let moves = 0;
 let active = true;
@@ -18,7 +20,7 @@ const movesText = document.querySelector('.moves');
 const matchedCards = document.querySelectorAll('.match');
 const starThree= stars[2];
 const starTwo = stars[1];
-//writeModalStats();
+
 
 
 // timer starts ONLY once user clicks the deck
@@ -26,7 +28,7 @@ deck.addEventListener('click',startTimer,{once : true} );
 
 
 
-
+//randomizes the cards
 function shuffleDeck() {
    const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
    const shuffledCards = shuffle(cardsToShuffle);
@@ -52,16 +54,14 @@ function shuffle(array) {
 }
 
 
-
+//move counter
 function addMove () {
  moves++;
- //const movesText = document.querySelector('.moves');
  movesText.innerHTML = moves;
 }
 
 //decreases star score based on number of moves
 function changeStars (){
- //const stars= Array.from(document.querySelectorAll('.stars li'));
    if (moves === 16){
    stars[2].style.color = '#ffffff';
    stars.pop();
@@ -70,11 +70,11 @@ function changeStars (){
    stars[1].style.color = '#ffffff';
      stars.pop();
    }
-     console.log(stars.length);
+     console.log("the number of star" + stars.length);
 };
 
 
-
+//defines the timer
 function startTimer() {
  if (active)
  {
@@ -103,17 +103,18 @@ function startTimer() {
   setTimeout(startTimer, 1000); //keep repeating this every second
 }
 }
-//function to be called when the game is over
+
+//function to be called when the game is over to stop the timer
 function stopTimer () {
  active= false;
  console.log('the clock has been stopped');
 }
 
 //function to reset the timer, stars, and deck when the game has been restarted
-document.getElementById("reset").addEventListener("click", gameReset);
+document.getElementById("reset").addEventListener("click",gameReset);
 
 function resetTimer () {
- document.getElementById("clock").innerHTML = 00 + ":" + 00;
+ document.getElementById("clock").innerHTML = "0" + ":" + "00";
  active = false;
 }
 
@@ -154,7 +155,7 @@ function addToggledCard(clickTarget) {
  toggledCards.push(clickTarget);
 }
 
-//function to check for a match
+//function to check for a card match
 function checkForMatch() {
  if (
      toggledCards[0].firstElementChild.className ===
@@ -171,12 +172,11 @@ function checkForMatch() {
      toggledCards = [];
  }, 1000);
 }
-
 }
 
-//game ends when all of the cards are matched
+//game ends when all of the cards are matched and the modal with appear
 function checkMatchedCards (){
-//const matchedCards= document.querySelectorAll('.match');
+const matchedCards= document.querySelectorAll('.match');
 console.log(matchedCards.length);
 if (matchedCards.length === 16){
 stopTimer();
@@ -186,16 +186,15 @@ toggleModal();
 }
 }
 
+//function that toggles modal appearance
 function toggleModal(){
 const modal = document.querySelector('.modalbgd');
 modal.classList.toggle('hide');
 }
 
-// toggleModal() //opens the modal
-// //toggleModal() //closes the modal
-// writeModalStats();
 
 
+//function to gather the game stats and present them in the modal
 function writeModalStats(){
    const moveStat = document.querySelector('.moves').textContent;
    const timeStat = document.querySelector('.clock').textContent;
@@ -208,6 +207,7 @@ function writeModalStats(){
    document.querySelector('.modalStars').innerHTML = "with a rating of " + starStat + " stars!";
 }
 
+//function to reset the cards back to flipper over
 function resetCards() {
   const cards = document. querySelectorAll('.deck li');
   for (let card of cards) {
@@ -215,38 +215,35 @@ function resetCards() {
   }
 }
 
-//resetting the stars bringing the color back and make the array hold 3 stars again
+//resetting the stars. Thos function pushes stars back into the array and recolors them
 function resetStars(){
   if(stars.length = 2){
     stars.push(starThree);
     starThree.style.color = '#EF798A';
-
+  }
   if(stars.length = 1){
     stars.push(starTwo);
     starTwo.style.color = '#EF798A';
   }
   }
 
-  // const newStars = Array.from(document.querySelectorAll('.stars li'));
-  // if (stars[0].style.color = '#ffffff'){
-  //   stars[0].style.color= '#EF798A';
-  }
-  //stars[1].style.color = '#EF798A';
+
 
 
 function gameReset(){
-  let moves= 0;
+  moves = 0;
   movesText.innerHTML = 0
   resetTimer();
-  let toggledCards = [];
   resetCards();
   resetStars();
   shuffleDeck();
 }
 
-document.querySelector('.replay').addEventListener('click',replayGame);
+document.querySelector('#replay').addEventListener('click',replayGame);
+document.querySelector('#close').addEventListener('click',toggleModal);
 
-function replayGame (){
+
+function replayGame () {
   gameReset();
   toggleModal();
 }
