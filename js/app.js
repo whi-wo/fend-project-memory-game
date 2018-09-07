@@ -1,15 +1,9 @@
 //global variables
-
-const cardsToShuffle = ['fa-diamond', 'fa-diamond',
-             'fa-paper-plane-o', 'fa-paper-plane-o',
-             'fa-anchor', 'fa-anchor',
-             'fa-bolt', 'fa-bolt',
-             'fa-cube','fa-cube',
-             'fa-bicycle', 'fa-bicycle',
-             'fa-leaf', 'fa-leaf',
-             'fa-bomb', 'fa-bomb',
-             ];
-
+const singleCards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor',
+                        'fa-bolt', 'fa-cube','fa-bicycle', 'fa-leaf',
+                        'fa-bomb',
+                        ];
+const cardsToShuffle = singleCards.concat(singleCards);
 
 let toggledCards = [];
 let moves = 0;
@@ -40,7 +34,7 @@ shuffleDeck();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-   var currentIndex = array.length, temporaryValue, randomIndex;
+   let currentIndex = array.length, temporaryValue, randomIndex;
 
    while (currentIndex !== 0) {
        randomIndex = Math.floor(Math.random() * currentIndex);
@@ -105,7 +99,7 @@ function startTimer() {
 
 //function to be called when the game is over to stop the timer
 function stopTimer () {
- active= false;
+ active = false;
  console.log('the clock has been stopped');
 }
 
@@ -179,14 +173,15 @@ console.log(matchedCards.length);
 if (matchedCards.length === 16){
 stopTimer();
 console.log('all cards have been matched!');
-writeModalStats();
-toggleModal();
+setTimeout(writeModalStats, 100);
+setTimeout(toggleModal, 100);
 }
 }
 
+
 //function that toggles modal appearance
 function toggleModal(){
-const modal = document.querySelector('.modalbgd');
+const modal = document.querySelector('.modal-bgd');
 modal.classList.toggle('hide');
 }
 
@@ -200,9 +195,9 @@ function writeModalStats(){
    console.log(moveStat);
    console.log(timeStat);
    console.log(starStat);
-   document.querySelector('.modalMoves').innerHTML = "in " + moveStat + " moves!";
-   document.querySelector('.modalTime').innerHTML = "You finished with a time of " + timeStat;
-   document.querySelector('.modalStars').innerHTML = "with a rating of " + starStat + " stars!";
+   document.querySelector('.modal-time').innerHTML = "You finished with a time of " + timeStat;
+   document.querySelector('.modal-moves').innerHTML = "in " + moveStat + " moves";
+   document.querySelector('.modal-stars').innerHTML = "with a star rating of " + starStat + "!";
 }
 
 //function to reset the cards back to flipper over
@@ -217,31 +212,18 @@ function resetCards() {
 function resetStars(){
   if(stars.length = 2){
     stars.push(starThree);
-    starThree.style.color = '#EF798A';
+    starThree.style.color = '#eF798a';
   }
   if(stars.length = 1){
     stars.push(starTwo);
-    starTwo.style.color = '#EF798A';
+    starTwo.style.color = '#eF798a';
   }
   }
-
-
 
 
 function gameReset(){
-  moves = 0;
-  movesText.innerHTML = 0
-  resetTimer();
-  resetCards();
-  resetStars();
-  shuffleDeck();
+  location.reload();
 }
 
-document.querySelector('#replay').addEventListener('click',replayGame);
+document.querySelector('#replay').addEventListener('click',gameReset);
 document.querySelector('#close').addEventListener('click',toggleModal);
-
-
-function replayGame () {
-  gameReset();
-  toggleModal();
-}
